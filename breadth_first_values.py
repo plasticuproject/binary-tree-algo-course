@@ -1,4 +1,5 @@
 """depth_first_values.py"""
+from timeit import timeit
 from collections import deque
 from typing import Optional, List, Deque
 
@@ -54,3 +55,7 @@ c.right = f
 # TESTS
 assert breadth_first_traversal_iterative(a) == ["a", "b", "c", "d", "e", "f"]
 assert not breadth_first_traversal_iterative(None)
+
+# TIME TESTS
+print("\nbreadth_first_traversal_iterative:")
+print(timeit(lambda: breadth_first_traversal_iterative(a), number=1000000))

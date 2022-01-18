@@ -1,4 +1,5 @@
 """tree_sum.py"""
+from timeit import timeit
 from collections import deque
 from typing import Optional, Deque
 
@@ -107,3 +108,11 @@ assert depth_first_sum_recursive(b) == 17
 assert depth_first_sum_recursive(c) == 5
 assert depth_first_sum_recursive(d) == 4
 assert not depth_first_sum_recursive(None)
+
+# TIME TESTS
+print("\nbreadth_first_sum:")
+print(timeit(lambda: breadth_first_sum(a), number=1000000))
+print("\ndepth_first_sum_iterative:")
+print(timeit(lambda: depth_first_sum_iterative(a), number=1000000))
+print("\ndepth_first_sum_recursive:")
+print(timeit(lambda: depth_first_sum_recursive(a), number=1000000))

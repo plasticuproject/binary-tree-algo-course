@@ -1,4 +1,5 @@
 """tree_includes.py"""
+from timeit import timeit
 from collections import deque
 from typing import Optional, Deque
 
@@ -93,3 +94,11 @@ assert depth_first_includes_recursive(a, "e")
 assert not depth_first_includes_recursive(a, "g")
 assert not depth_first_includes_recursive(None, "e")
 assert not depth_first_includes_recursive(None, "g")
+
+# TIME TESTS
+print("\nbreadth_first_includes:")
+print(timeit(lambda: breadth_first_includes(a, "e"), number=1000000))
+print("\ndepth_first_includes_iterative:")
+print(timeit(lambda: depth_first_includes_iterative(a, "e"), number=1000000))
+print("\ndepth_first_includes_recursive:")
+print(timeit(lambda: depth_first_includes_recursive(a, "e"), number=1000000))

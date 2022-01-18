@@ -1,4 +1,5 @@
 """depth_first_values.py"""
+from timeit import timeit
 from collections import deque
 from typing import Optional, List, Deque
 
@@ -70,3 +71,9 @@ assert not depth_first_traversal_iterative(None)
 
 assert depth_first_traversal_recursive(a) == ["a", "b", "d", "e", "c", "f"]
 assert not depth_first_traversal_recursive(None)
+
+# TIME TESTS
+print("\ndepth_first_traversal_iterative:")
+print(timeit(lambda: depth_first_traversal_iterative(a), number=1000000))
+print("\ndepth_first_traversal_recursive:")
+print(timeit(lambda: depth_first_traversal_recursive(a), number=1000000))
