@@ -17,12 +17,12 @@ class Node:  # pylint: disable=too-few-public-methods
 #  / \   \
 # d   e   f
 
-a = Node('a')
-b = Node('b')
-c = Node('c')
-d = Node('d')
-e = Node('e')
-f = Node('f')
+a = Node("a")
+b = Node("b")
+c = Node("c")
+d = Node("d")
+e = Node("e")
+f = Node("f")
 
 a.left = b
 a.right = c

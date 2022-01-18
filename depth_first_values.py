@@ -51,12 +51,12 @@ def depth_first_traversal_recursive(
 #  / \   \
 # d   e   f
 
-a = Node('a')
-b = Node('b')
-c = Node('c')
-d = Node('d')
-e = Node('e')
-f = Node('f')
+a = Node("a")
+b = Node("b")
+c = Node("c")
+d = Node("d")
+e = Node("e")
+f = Node("f")
 
 a.left = b
 a.right = c
