@@ -17,7 +17,7 @@ def breadth_first_sum(root: Optional[Node]) -> Optional[int]:
     """Breadth-first iterative binary tree traversal. Returns
     sum of Nodes."""
     value: Optional[int] = None
-    if root is None:
+    if not root:
         return value
     value = 0
     queue: Deque[Node] = deque([root])
@@ -36,7 +36,7 @@ def depth_first_sum_iterative(root: Optional[Node]) -> Optional[int]:
     """Depth-first iterative binary tree traversal. Returns
     sum of Nodes."""
     value: Optional[int] = None
-    if root is None:
+    if not root:
         return value
     value = 0
     stack: Deque[Node] = deque([root])
@@ -55,15 +55,15 @@ def depth_first_sum_recursive(root: Optional[Node]) -> Optional[int]:
     """Depth-first recursive binary tree traversal. Returns
     sum of Nodes."""
     value: Optional[int] = None
-    if root is None:
+    if not root:
         return value
     value = 0
+    left_values = depth_first_sum_recursive(root.left)
+    right_values = depth_first_sum_recursive(root.right)
     if root.val:
         value += root.val
-    left_values = depth_first_sum_recursive(root.left)
     if left_values:
         value += left_values
-    right_values = depth_first_sum_recursive(root.right)
     if right_values:
         value += right_values
     return value

@@ -17,7 +17,7 @@ def breadth_first_min(root: Optional[Node]) -> Optional[int]:
     """Breadth-first iterative binary tree traversal. Returns
     Node of minimum value."""
     value: Optional[int] = None
-    if root is None:
+    if not root:
         return value
     value = 0
     if root.val:
@@ -38,7 +38,7 @@ def depth_first_min_iterative(root: Optional[Node]) -> Optional[int]:
     """Depth-first iterative binary tree traversal. Returns
     Node of minimum value."""
     value: Optional[int] = None
-    if root is None:
+    if not root:
         return None
     value = 0
     if root.val:
@@ -59,15 +59,15 @@ def depth_first_min_recursive(root: Optional[Node]) -> Optional[int]:
     """Depth-first recursive binary tree traversal. Returns
     Node of minimum value."""
     value: Optional[int] = None
-    if root is None:
+    if not root:
         return value
     value = 0
+    left_values = depth_first_min_recursive(root.left)
+    right_values = depth_first_min_recursive(root.right)
     if root.val:
         value += root.val
-    left_values = depth_first_min_recursive(root.left)
     if left_values and left_values < value:
         value = left_values
-    right_values = depth_first_min_recursive(root.right)
     if right_values and right_values < value:
         value = right_values
     return value

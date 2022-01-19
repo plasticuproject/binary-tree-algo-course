@@ -16,7 +16,7 @@ class Node:  # pylint: disable=too-few-public-methods
 def breadth_first_includes(root: Optional[Node], target: str) -> bool:
     """Breadth-first iterative binary tree traversal. Returns
     True if target is found in Node, False otherwise."""
-    if root is None:
+    if not root:
         return False
     queue: Deque[Node] = deque([root])
     while queue:
@@ -33,7 +33,7 @@ def breadth_first_includes(root: Optional[Node], target: str) -> bool:
 def depth_first_includes_iterative(root: Optional[Node], target: str) -> bool:
     """Depth-first iterative binary tree traversal. Returns
     True if target is found in Node, False otherwise."""
-    if root is None:
+    if not root:
         return False
     stack: Deque[Node] = deque([root])
     while stack:
@@ -50,7 +50,7 @@ def depth_first_includes_iterative(root: Optional[Node], target: str) -> bool:
 def depth_first_includes_recursive(root: Optional[Node], target: str) -> bool:
     """Depth-first recursive binary tree traversal. Returns
     True if target is found in Node, False otherwise."""
-    if root is None:
+    if not root:
         return False
     if root.val == target:
         return True

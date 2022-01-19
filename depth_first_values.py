@@ -18,7 +18,7 @@ def depth_first_traversal_iterative(
     """Depth-first iterative binary tree traversal. Returns
     list of nodes in order traversed."""
     values: List[Optional[str]] = []
-    if root is None:
+    if not root:
         return values
     stack: Deque[Node] = deque([root])
     while stack:
@@ -36,7 +36,7 @@ def depth_first_traversal_recursive(
     """Depth-first recursive binary tree traversal. Returns
     list of nodes in order traversed."""
     values: List[Optional[str]] = []
-    if root is None:
+    if not root:
         return values
     left_values = depth_first_traversal_recursive(root.left)
     right_values = depth_first_traversal_recursive(root.right)

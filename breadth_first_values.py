@@ -18,7 +18,7 @@ def breadth_first_traversal_iterative(
     """Breadth-first iterative binary tree traversal. Returns
     list of nodes in order traversed."""
     values: List[Optional[str]] = []
-    if root is None:
+    if not root:
         return values
     queue: Deque[Node] = deque([root])
     while queue:
