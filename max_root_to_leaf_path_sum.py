@@ -14,7 +14,7 @@ class Node():  # pylint: disable=too-few-public-methods
 
 def depth_first_recursive(root: Optional[Node]) -> Optional[int]:
     """Depth-first recursive binary tree traversal. Returns
-    Node of maximum root to leaf sumation."""
+    sum value of maximum root to leaf path."""
     value: Optional[int] = None
     left_value: int = 0
     right_value: int = 0
