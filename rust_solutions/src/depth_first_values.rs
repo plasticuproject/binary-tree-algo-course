@@ -3,13 +3,13 @@ use crate::node::{Node, NodeRef};
 use std::collections::VecDeque;
 
 #[allow(dead_code)]
-trait Dfs {
-    fn depth_first_traversal_iterative(&self) -> Vec<String>;
-    fn depth_first_traversal_recursive(&self) -> Vec<String>;
+trait Dfs<T> {
+    fn depth_first_traversal_iterative(&self) -> Vec<T>;
+    fn depth_first_traversal_recursive(&self) -> Vec<T>;
 }
 
-impl Dfs for NodeRef {
-    fn depth_first_traversal_iterative(&self) -> Vec<String> {
+impl<T: Clone> Dfs<T> for NodeRef<T> {
+    fn depth_first_traversal_iterative(&self) -> Vec<T> {
         let mut values = Vec::new();
         let mut stack = VecDeque::new();
 
@@ -30,7 +30,7 @@ impl Dfs for NodeRef {
         values
     }
 
-    fn depth_first_traversal_recursive(&self) -> Vec<String> {
+    fn depth_first_traversal_recursive(&self) -> Vec<T> {
         let mut values = Vec::new();
         values.push(self.borrow().val.clone());
         if let Some(right) = &self.borrow().right {
@@ -53,13 +53,13 @@ mod tests {
     //   / \   \
     //  d   e   f
 
-    fn create_tree() -> NodeRef {
-        let a = Node::new("a");
-        let b = Node::new("b");
-        let c = Node::new("c");
-        let d = Node::new("d");
-        let e = Node::new("e");
-        let f = Node::new("f");
+    fn create_tree() -> NodeRef<String> {
+        let a = Node::new("a".to_string());
+        let b = Node::new("b".to_string());
+        let c = Node::new("c".to_string());
+        let d = Node::new("d".to_string());
+        let e = Node::new("e".to_string());
+        let f = Node::new("f".to_string());
 
         a.borrow_mut().insert_left(b.to_owned());
         a.borrow_mut().insert_right(c.to_owned());

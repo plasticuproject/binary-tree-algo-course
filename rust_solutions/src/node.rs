@@ -1,30 +1,30 @@
 use std::{cell::RefCell, rc::Rc};
 
 #[derive(Debug, Clone)]
-pub struct Node {
-    pub val: String,
-    pub left: Option<NodeRef>,
-    pub right: Option<NodeRef>,
+pub struct Node<T> {
+    pub val: T,
+    pub left: Option<NodeRef<T>>,
+    pub right: Option<NodeRef<T>>,
 }
 
 #[allow(clippy::module_name_repetitions)]
-pub type NodeRef = Rc<RefCell<Node>>;
+pub type NodeRef<T> = Rc<RefCell<Node<T>>>;
 
-impl Node {
+impl<T> Node<T> {
     #[must_use]
-    pub fn new(val: &str) -> NodeRef {
+    pub fn new(val: T) -> NodeRef<T> {
         Rc::new(RefCell::new(Self {
-            val: val.to_string(),
+            val,
             left: None,
             right: None,
         }))
     }
 
-    pub fn insert_left(&mut self, child: NodeRef) {
+    pub fn insert_left(&mut self, child: NodeRef<T>) {
         self.left = Some(child);
     }
 
-    pub fn insert_right(&mut self, child: NodeRef) {
+    pub fn insert_right(&mut self, child: NodeRef<T>) {
         self.right = Some(child);
     }
 }
@@ -39,13 +39,13 @@ mod tests {
     //   / \   \
     //  d   e   f
 
-    fn create_tree() -> Vec<NodeRef> {
-        let a = Node::new("a");
-        let b = Node::new("b");
-        let c = Node::new("c");
-        let d = Node::new("d");
-        let e = Node::new("e");
-        let f = Node::new("f");
+    fn create_tree() -> Vec<NodeRef<String>> {
+        let a = Node::new("a".to_string());
+        let b = Node::new("b".to_string());
+        let c = Node::new("c".to_string());
+        let d = Node::new("d".to_string());
+        let e = Node::new("e".to_string());
+        let f = Node::new("f".to_string());
 
         a.borrow_mut().insert_left(b.to_owned());
         a.borrow_mut().insert_right(c.to_owned());
