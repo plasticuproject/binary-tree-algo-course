@@ -19,10 +19,10 @@ impl Bfs for NodeRef {
             values.push(current_borrowed.val.clone());
 
             if let Some(left) = &current_borrowed.left {
-                queue.push_back(left.clone());
+                queue.push_back(left.to_owned());
             }
             if let Some(right) = &current_borrowed.right {
-                queue.push_back(right.clone());
+                queue.push_back(right.to_owned());
             }
         }
 
@@ -48,11 +48,11 @@ mod tests {
         let e = Node::new("e");
         let f = Node::new("f");
 
-        a.borrow_mut().insert_left(b.clone());
-        a.borrow_mut().insert_right(c.clone());
-        b.borrow_mut().insert_left(d.clone());
-        b.borrow_mut().insert_right(e.clone());
-        c.borrow_mut().insert_right(f.clone());
+        a.borrow_mut().insert_left(b.to_owned());
+        a.borrow_mut().insert_right(c.to_owned());
+        b.borrow_mut().insert_left(d.to_owned());
+        b.borrow_mut().insert_right(e.to_owned());
+        c.borrow_mut().insert_right(f.to_owned());
 
         a
     }

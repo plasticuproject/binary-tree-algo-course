@@ -47,11 +47,11 @@ mod tests {
         let e = Node::new("e");
         let f = Node::new("f");
 
-        a.borrow_mut().insert_left(b.clone());
-        a.borrow_mut().insert_right(c.clone());
-        b.borrow_mut().insert_left(d.clone());
-        b.borrow_mut().insert_right(e.clone());
-        c.borrow_mut().insert_right(f.clone());
+        a.borrow_mut().insert_left(b.to_owned());
+        a.borrow_mut().insert_right(c.to_owned());
+        b.borrow_mut().insert_left(d.to_owned());
+        b.borrow_mut().insert_right(e.to_owned());
+        c.borrow_mut().insert_right(f.to_owned());
 
         vec![a, b, c, d, e, f]
     }
